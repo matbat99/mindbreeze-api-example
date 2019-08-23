@@ -1,0 +1,73 @@
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,300,700");
+@import url("https://use.fontawesome.com/releases/v5.0.10/css/all.css");
+
+.avatar {
+    width: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+.tabs {
+    display: flex;
+  
+  }
+  
+.tab {
+    padding: 2px 5px;
+    opacity: 0.4;
+    color: black;
+    border-bottom: 2px solid transparent;
+  
+  }
+.tab:hover {
+    opacity: 0.8;
+  }
+
+.tab.active {
+border-bottom: 2px solid black;
+opacity: 0.1;
+}
+
+.notifications {
+    width: 100%;
+    margin-top: 8px;
+}
+.notification {
+    margin: 9px 0;
+    border-radius: 2px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+    padding: 1px 4px;
+    box-shadow: 0 0 7px rgba(0,0,0,0.5);
+  }
+  
+.notification-box {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 25px;
+}
+  
+.notification-text-pod {
+    padding-top: 12px;
+    flex-grow: 1;
+}
+
+.notification-text-pod p, h4 {
+    display: block;
+    margin: 2px 0;
+  }
+  
+.btn-comment {
+    color: grey;
+    margin: 32px;
+    opacity: 0;
+  }
+  
+.notification:hover a {
+    opacity: 1;
+  }
+  
