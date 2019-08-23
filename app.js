@@ -34,11 +34,11 @@ const apiCall = () => {
 
             "query": {                                    
           
-              "quoted_term": "We’re looking forward to receiving your application!"                    
+              "quoted_term": "For this position we offer"                    
           
             },                                            
           
-          "count": 5
+          "count": 15
           })                                       
 
     })
