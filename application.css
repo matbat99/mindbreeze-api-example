@@ -4,7 +4,7 @@
 
 body {
     margin: 0 auto;
-    padding: 15px;
+    padding: 5px;
 }
 
 .avatar {
@@ -34,48 +34,49 @@ border-bottom: 2px solid black;
 opacity: 0.1;
 }
 
-.notifications {
-    width: 100%;
-    margin-top: 8px;
-}
 .notification {
-    margin: 9px 0;
-    border-radius: 2px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: white;
-    padding: 1px 4px;
-    box-shadow: 0 0 7px rgba(0,0,0,0.5);
-  }
-  
-.notification-box {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 25px;
-}
-  
-.notification-text-pod {
-    padding-top: 12px;
-    flex-grow: 1;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+  border: 1px solid rgb(235,235,235);
 }
 
-.notification-text-pod p, h4 {
-    display: block;
-    margin: 2px 0;
-  }
-  
-.btn-comment {
-    color: grey;
-    margin: 32px;
-    opacity: 0;
-  }
-  
-.notification:hover a {
-    opacity: 1;
-  }
+.notification .notification-content {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+
+.notification p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.notification small {
+  color: #999999;
+  font-weight: bold;
+}
+.notification .notification-actions {
+  opacity: 0;
+  display: flex;
+  transition: ease .3s;
+}
+
+.notification:hover .notification-actions {
+  opacity: 1;
+}
+
+.notification .notification-actions a {
+  color: #999999;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.notification .notification-actions a:hover {
+  color: #555555;
+}
+
   
   .banner {
     background-size: cover;
