@@ -51,6 +51,10 @@ const apiCall = () => {
     .catch(error => console.log(error));
 }
 
+const button_trigger = document.querySelector(".button-trigger");
+
+button_trigger.addEventListener('click', apiCall);
 
 
-apiCall();
+
+//apiCall();
