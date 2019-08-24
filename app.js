@@ -13,26 +13,32 @@ const outputToScreen = (data) => {
 
     const list = document.querySelector('#resultsList');
 
-    //list.innerHTML="";
-    //console.log(data);
-    data.forEach((data) => {
-        // grad the URL to make a link
-        let result = data["id"];
-        // remove extra metadata before https:
-        let jobURL = result.substr(result.indexOf("com") + 4); 
-        jobURL = jobURL.substring(0, jobURL.length-1);
-        // grab the job title for output
-        jobTitle = extractJobTitle(jobURL);
+    
+    
+    if (data) {
+        // guard clause for empty results or bad response from api call
+        data.forEach((data) => {
+            // grad the URL to make a link
+            let result = data["id"];
+            // remove extra metadata before https:
+            let jobURL = result.substr(result.indexOf("com") + 4); 
+            jobURL = jobURL.substring(0, jobURL.length-1);
+            // grab the job title for output
+            jobTitle = extractJobTitle(jobURL);
 
-        list.insertAdjacentHTML('beforeend', `
-            <div class="notification">
-            <img src='https://www.trzcacak.rs/myfile/full/29-294946_mindbreeze-inspire-circle.png' class="avatar" />
-            <div class="notification-content">
-            <p><small>${jobTitle}</small></p>
-            <a href="${jobURL}" target="_blank">${jobURL}</a>
-            </div>`
-        );
-    })
+            list.insertAdjacentHTML('beforeend', `
+                <div class="notification">
+                <img src='https://www.trzcacak.rs/myfile/full/29-294946_mindbreeze-inspire-circle.png' class="avatar" />
+                <div class="notification-content">
+                <p><small>${jobTitle}</small></p>
+                <a href="${jobURL}" target="_blank">${jobURL}</a>
+                </div>`
+            );
+        })
+    } else {
+        // bad results output
+        list.innerHTML = "<h1>Sorry, something went wrong, please reload page.</h1>";
+    }
 
 
 }
@@ -44,7 +50,7 @@ const apiCall = () => {
         body: JSON.stringify({                                                
 
             "query": {                                    
-              "quoted_term": "For this position we offer"                    
+                "quoted_term": "For this position we offer"                        
             },                                            
           "count": 15
           })                                       
@@ -77,6 +83,7 @@ const apiCall2 = () => {
     })
     .catch(error => console.log(error));
 }
+/*
 const apiCall3 = () => {
     
     fetch("https://demo.mindbreeze.com/public/api/v2/search", {
@@ -97,6 +104,7 @@ const apiCall3 = () => {
     })
     .catch(error => console.log(error));
 }
+*/
 
 
 const button_trigger = document.querySelector(".button-trigger");
@@ -104,7 +112,7 @@ const button_trigger = document.querySelector(".button-trigger");
 const searchJobs = () => {
     apiCall();
     apiCall2();
-    apiCall3();
+    //apiCall3();
     //apiCall4();
 }
 
