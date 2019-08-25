@@ -3,6 +3,7 @@ const searchArray = ["For this position we offer", "We’re looking forward to r
 
 const button_trigger = document.querySelector(".button-trigger");
 
+const list = document.querySelector('#resultsList');
 
 const extractJobTitle = (jobURL) => {
     // extract the job title from the job URL
@@ -17,15 +18,13 @@ const extractJobTitle = (jobURL) => {
 const outputToScreen = (data) => {
     //const form = document.querySelector('.select-me');
 
-    const list = document.querySelector('#resultsList');
-    
     if (data) {
         // guard clause for empty results or bad response from api call
         data.forEach((data) => {
-            // grad the URL to make a link
+            // grab the URL to make a link
             let result = data["id"];
             // remove extra metadata before https:
-            let jobURL = result.substr(result.indexOf("com") + 4); 
+            let jobURL = result.substr(result.indexOf("com") + 4);
             jobURL = jobURL.substring(0, jobURL.length-1);
             // grab the job title for output
             jobTitle = extractJobTitle(jobURL);
@@ -46,32 +45,40 @@ const outputToScreen = (data) => {
 }
 
 const buildQuery = (searchInput) => {
-    return {                                                
-        "query": {                                    
-            "quoted_term": `"${searchInput}"`                     
-        },                                            
+    return {
+        "query": {
+            "quoted_term": `"${searchInput}"`
+        },
       "count": 25
       };
 }
 
 const apiCall = (searchTerm) => {
-    
+
     fetch("https://demo.mindbreeze.com/public/api/v2/search", {
         method: "POST",
-        body: JSON.stringify(buildQuery(searchTerm))                                       
+        body: JSON.stringify(buildQuery(searchTerm))
     })
     .then(response => response.json())
     .then((data)=> {
         //console.log(data);
-        
+
         outputToScreen(data["resultset"]["results"]);
     })
     .catch(error => console.log(error));
 }
 
 const searchJobs = () => {
+    // erase previous search
+    list.innerHTML = "";
+
+    // search from array of terms
+
     searchArray.forEach (apiCall);
-    
+
+    // flip button text
+    button_trigger.innerHTML="Jobs listed below!";
+
 }
 
 button_trigger.addEventListener('click', searchJobs);

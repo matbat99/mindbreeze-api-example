@@ -7,6 +7,10 @@ body {
     padding: 5px;
 }
 
+ul {
+  padding: 0;
+}
+
 .avatar {
     width: 65px;
     border-radius: 50%;
@@ -15,15 +19,15 @@ body {
 
 .tabs {
     display: flex;
-  
+
   }
-  
+
 .tab {
     padding: 2px 5px;
     opacity: 0.4;
     color: black;
     border-bottom: 2px solid transparent;
-  
+
   }
 .tab:hover {
     opacity: 0.8;
@@ -77,13 +81,14 @@ opacity: 0.1;
   color: #555555;
 }
 
-  
+
   .banner {
     background-size: cover;
     background-position: center;
     padding: 150px 0;
+    margin-bottom: 20px;
   }
-  
+
   .banner h1 {
     margin: 0;
     color: white;
@@ -91,14 +96,14 @@ opacity: 0.1;
     font-size: 32px;
     font-weight: bold;
   }
-  
+
   .banner p {
     font-size: 20px;
     color: white;
     opacity: .7;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   }
-  
+
   .btn-ghost {
     color: #4A4A4A;
     border: 1px solid #4A4A4A;
@@ -108,11 +113,11 @@ opacity: 0.1;
     opacity: 0.6;
     transition: opacity 0.3s ease;
   }
-  
+
   .btn-ghost:hover {
     opacity: 1;
   }
-  
+
   .btn-flat {
     color: white;
     padding: 8px 24px;
@@ -120,12 +125,12 @@ opacity: 0.1;
     background: #1EDD88;
     transition: background 0.3s ease;
   }
-  
+
   .btn-flat:hover {
     background: #1BCB7F;
     color: white;
   }
-  
+
   .btn-gradient {
     color: white;
     padding: 8px 24px;
@@ -135,9 +140,8 @@ opacity: 0.1;
     transition: background 0.3s ease;
     border: 1px solid #0F60C4;
   }
-  
+
   .btn-gradient:hover {
     background: linear-gradient(#147EFF, #0F67DA);
     color: white;
   }
-  
