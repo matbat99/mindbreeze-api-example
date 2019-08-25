@@ -1,3 +1,9 @@
+// add any more job search terms to array searchArray
+const searchArray = ["For this position we offer", "We’re looking forward to receiving your application!"];
+
+const button_trigger = document.querySelector(".button-trigger");
+
+
 const extractJobTitle = (jobURL) => {
     // extract the job title from the job URL
 
@@ -12,8 +18,6 @@ const outputToScreen = (data) => {
     //const form = document.querySelector('.select-me');
 
     const list = document.querySelector('#resultsList');
-
-    
     
     if (data) {
         // guard clause for empty results or bad response from api call
@@ -39,15 +43,22 @@ const outputToScreen = (data) => {
         // bad results output
         list.innerHTML = "<h1>Sorry, something went wrong, please reload page.</h1>";
     }
+}
 
-
+const buildQuery = (searchInput) => {
+    return {                                                
+        "query": {                                    
+            "quoted_term": `"${searchInput}"`                     
+        },                                            
+      "count": 25
+      };
 }
 
 const apiCall = (searchTerm) => {
     
     fetch("https://demo.mindbreeze.com/public/api/v2/search", {
         method: "POST",
-        body: JSON.stringify(searchTerm)                                       
+        body: JSON.stringify(buildQuery(searchTerm))                                       
     })
     .then(response => response.json())
     .then((data)=> {
@@ -58,31 +69,11 @@ const apiCall = (searchTerm) => {
     .catch(error => console.log(error));
 }
 
-
-
-const button_trigger = document.querySelector(".button-trigger");
-
 const searchJobs = () => {
-    let search1 = {                                                
-        "query": {                                    
-            "quoted_term": "For this position we offer"                        
-        },                                            
-      "count": 15
-      }
-    let search2 = {                                               
-
-        "query": {                                    
-            "quoted_term": "We’re looking forward to receiving your application!"                        
-        },                                            
-      "count": 15
-      }
-    apiCall(search1);
-    apiCall(search2);
+    searchArray.forEach (apiCall);
+    
 }
-
 
 button_trigger.addEventListener('click', searchJobs);
 
 
-
-//apiCall();
