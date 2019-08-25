@@ -43,17 +43,11 @@ const outputToScreen = (data) => {
 
 }
 
-const apiCall = () => {
+const apiCall = (searchTerm) => {
     
     fetch("https://demo.mindbreeze.com/public/api/v2/search", {
         method: "POST",
-        body: JSON.stringify({                                                
-
-            "query": {                                    
-                "quoted_term": "For this position we offer"                        
-            },                                            
-          "count": 15
-          })                                       
+        body: JSON.stringify(searchTerm)                                       
     })
     .then(response => response.json())
     .then((data)=> {
@@ -63,57 +57,27 @@ const apiCall = () => {
     })
     .catch(error => console.log(error));
 }
-const apiCall2 = () => {
-    
-    fetch("https://demo.mindbreeze.com/public/api/v2/search", {
-        method: "POST",
-        body: JSON.stringify({                                                
 
-            "query": {                                    
-              "quoted_term": "We’re looking forward to receiving your application!"                    
-            },                                            
-          "count": 15
-          })                                       
-    })
-    .then(response => response.json())
-    .then((data)=> {
-        //console.log(data);
-        
-        outputToScreen(data["resultset"]["results"]);
-    })
-    .catch(error => console.log(error));
-}
-/*
-const apiCall3 = () => {
-    
-    fetch("https://demo.mindbreeze.com/public/api/v2/search", {
-        method: "POST",
-        body: JSON.stringify({                                                
-
-            "query": {                                    
-              "quoted_term": "Your area of responsibility:"                    
-            },                                            
-          "count": 15
-          })                                       
-    })
-    .then(response => response.json())
-    .then((data)=> {
-        //console.log(data);
-        
-        outputToScreen(data["resultset"]["results"]);
-    })
-    .catch(error => console.log(error));
-}
-*/
 
 
 const button_trigger = document.querySelector(".button-trigger");
 
 const searchJobs = () => {
-    apiCall();
-    apiCall2();
-    //apiCall3();
-    //apiCall4();
+    let search1 = {                                                
+        "query": {                                    
+            "quoted_term": "For this position we offer"                        
+        },                                            
+      "count": 15
+      }
+    let search2 = {                                               
+
+        "query": {                                    
+            "quoted_term": "We’re looking forward to receiving your application!"                        
+        },                                            
+      "count": 15
+      }
+    apiCall(search1);
+    apiCall(search2);
 }
 
 
